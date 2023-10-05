@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>亂碼文翻譯器</title>
+        
+    </head>
+    <style>
+        * {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  padding: 80px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #215086;
+}
+
+.panel {
+  padding: 30px;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  background-color: #F7CE54;
+  width: 280px;
+  border: 5px solid black;
+  transition: 1s;
+}
+
+.panel:hover {
+  box-shadow: 0px 0px 100px rgba(247, 206, 84, 0.7);
+  transform: scale(1.01);
+}
+
+h1, h3 {
+  text-align: center;
+  opacity: 0.8;
+}
+
+h1 {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin: 10px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 5px;
+  box-sizing: border-box;
+  outline: none;
+  border: solid 3px #215086;
+  border-radius: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0 6px 0 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+button.blu {
+  background-color: #215086;
+  color: white;
+}
+button.wht {
+  background-color: white;
+  color: #215086;
+}
+button:hover {
+  transform: scale(1.07);
+}
+
+#input #output {
+  border-radius: 5px;
+}
+    </style>
+    <body>
+        <div class="panel">
+            <h1>亂碼文翻譯器</h1>
+            <textarea id="input" rows="5" placeholder="輸入亂碼文">su3cl3</textarea>
+            <h3>⮁</h3>
+            <textarea id="output" rows="5" placeholder="輸入注音文"></textarea>
+            <div class="buttons">
+              <button class="blu" id="btnblu">翻譯成注音</button>
+              <button class="wht" id="btnwht">翻譯成亂碼</button>
+            </div>
+          </div>
+
+          
+    </body>
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        console.clear()
+
+        var chineseCode = "A;ㄇ|B;ㄖ|C;ㄏ|D;ㄎ|E;ㄍ|F;ㄑ|G;ㄕ|H;ㄘ|I;ㄛ|J;ㄨ|K;ㄜ|L;ㄠ|M;ㄩ|N;ㄙ|O;ㄟ|P;ㄣ|Q;ㄆ|R;ㄐ|S;ㄋ|T;ㄔ|U;ㄧ|V;ㄒ|W;ㄊ|X;ㄌ|Y;ㄗ|Z;ㄈ|/;ㄥ|1;ㄅ|2;ㄉ|3;ˇ|4;ˋ|5;ㄓ|6;ˊ|7;˙|8;ㄚ|9;ㄞ|0;ㄢ|.;ㄡ|,;ㄝ"
+
+        var chineseList = chineseCode.split("|")
+        for(var i=0; i<chineseList.length;i++){
+        chineseList[i]=chineseList[i].split(";")
+        }
+
+        function findCode(letter){
+        for(var i=0; i<chineseList.length; i++){
+            if (chineseList[i][0]==letter){
+            return chineseList[i][1]
+            }
+            if (letter==";"){
+            return "ㄤ"}
+            }
+        return letter
+        }
+
+        function findLetter(code){
+        for(var i=0; i<chineseList.length; i++){
+            if (chineseList[i][1]==code){
+            return chineseList[i][0]
+            }
+            if (code=="ㄤ"){
+            return ";"}
+            }
+            return code
+        }
+        
+
+        function TranslateToChinese(text){
+        // 先轉換成大寫
+        text = text.toUpperCase()
+        var result = ""
+        for(var i=0;i<text.length;i++){
+            // console.log(text[i])
+            result += findCode(text[i])
+        }
+        return result
+        }
+
+        function TranslateToEng(text){
+        var result = ""
+        for(var i=0;i<text.length;i++){
+            result += findLetter(text[i])
+        }
+        return result.toLowerCase()
+        }
+
+
+        $("#btnblu").click(function(){
+        var input = $("#input").val()
+        var result = TranslateToChinese(input)
+        $("#output").val(result)
+        })
+
+
+        $("#btnwht").click(function(){
+        var optput = $("#output").val()
+        var result = TranslateToEng(optput)
+        $("#input").val(result)
+        })
+    </script>
+
+</html>
