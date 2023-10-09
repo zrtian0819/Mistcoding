@@ -3,99 +3,114 @@
     <head>
         <meta charset="utf-8"/>
         <title>亂碼文翻譯器</title>
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <style>
-        * {
-  font-family: "Noto Sans TC", sans-serif;
-}
 
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
+      * {
+        font-family: "Noto Sans TC", sans-serif;
+        /* border: 1px solid #000; */
+      }
 
-body {
-  padding: 80px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #215086;
-}
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
 
-.panel {
-  padding: 30px;
-  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  position: relative;
-  z-index: 1;
-  background-color: #F7CE54;
-  width: 280px;
-  border: 5px solid black;
-  transition: 1s;
-}
+      body {
+        padding: 80px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #215086;
+      }
 
-.panel:hover {
-  box-shadow: 0px 0px 100px rgba(247, 206, 84, 0.7);
-  transform: scale(1.01);
-}
+      .panel {
+        padding: 30px;
+        box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+        border-radius: 25px;
+        position: relative;
+        z-index: 1;
+        background-color: #F7CE54;
+        width: 280px;
+        border: 5px solid black;
+        transition: 0.5s;
+        min-width: 230px;
+      }
 
-h1, h3 {
-  text-align: center;
-  opacity: 0.8;
-}
+      .panel:hover {
+        box-shadow: 0px 0px 300px rgb(13, 150, 153);
+        /* transform: scale(1.005); */
+      }
 
-h1 {
-  font-weight: 700;
-  margin-bottom: 20px;
-}
+      h1, h3 {
+        text-align: center;
+        opacity: 0.8;
+      }
 
-h3 {
-  margin: 10px;
-}
+      h1 {
+        font-weight: 900;
+        margin-bottom: 20px;
+      }
 
-textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 5px;
-  box-sizing: border-box;
-  outline: none;
-  border: solid 3px #215086;
-  border-radius: 10px;
-}
+      h3 {
+        margin: 10px;
+      }
 
-.buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
+      textarea {
+        width: 100%;
+        padding: 5px 15px;
+        font-size: 14px;
+        box-sizing: border-box;
+        outline: none;
+        border: solid 4px #0a284a;
+        border-radius: 10px;
+      }
 
-button {
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin: 0 6px 0 6px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  transition: 0.3s;
-}
-button.blu {
-  background-color: #215086;
-  color: white;
-}
-button.wht {
-  background-color: white;
-  color: #215086;
-}
-button:hover {
-  transform: scale(1.07);
-}
+      textarea:active{
+        border: solid 4px #2c78cf;
+      }
 
-#input #output {
-  border-radius: 5px;
-}
+      .buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      button {
+        padding: 10px 10px;
+        border-radius: 5px;
+        margin: 0 6px 0 6px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        transition: 0.3s;
+        /* border: 50px; */
+      }
+      button.blu {
+        background-color: #215086;
+        color: white;
+      }
+      button.wht {
+        background-color: white;
+        color: #215086;
+      }
+      button:hover {
+        transform: scale(1.07);
+      }
+
+      #input #output {
+        border-radius: 10px;
+      }
+
+      @media (max-width: 768px){
+        .panel{
+
+        }
+      }
+
     </style>
     <body>
         <div class="panel">
@@ -107,9 +122,10 @@ button:hover {
               <button class="blu" id="btnblu">翻譯成注音</button>
               <button class="wht" id="btnwht">翻譯成亂碼</button>
             </div>
-          </div>
+        </div>
+        <div class="sign">
 
-          
+        </div>
     </body>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -191,6 +207,7 @@ button:hover {
 
         })
 
+        alert("歡迎使用,請按下Enter試試")
 
     </script>
 
