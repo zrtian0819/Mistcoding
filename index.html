@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <title>亂碼文翻譯器</title>
-        
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     </head>
     <style>
         * {
@@ -174,10 +174,24 @@ button:hover {
 
 
         $("#btnwht").click(function(){
-        var optput = $("#output").val()
-        var result = TranslateToEng(optput)
+        var output = $("#output").val()
+        var result = TranslateToEng(output)
         $("#input").val(result)
         })
+
+
+        $(window).keydown(function(evt){
+          
+          if (evt.key=="Enter"){
+            console.log(evt.key + " was pressed")
+            var input = $("#input").val()
+            var result = TranslateToChinese(input)
+            $("#output").val(result)
+          }
+
+        })
+
+
     </script>
 
 </html>
