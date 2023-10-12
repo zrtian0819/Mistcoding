@@ -35,7 +35,7 @@
         z-index: 1;
         background-color: #F7CE54;
         width: 280px;
-        border: 5px solid black;
+        border: 7px solid black;
         transition: 0.5s;
         min-width: 230px;
       }
@@ -61,12 +61,14 @@
 
       textarea {
         width: 100%;
-        padding: 5px 15px;
-        font-size: 14px;
+        padding: 10px 15px;
+        font-size: 15px;
         box-sizing: border-box;
         outline: none;
+        resize: none;
         border: solid 4px #0a284a;
-        border-radius: 10px;
+        border-radius: 20px;
+        overflow:auto;
       }
 
       textarea:active{
@@ -81,14 +83,17 @@
 
       button {
         padding: 10px 10px;
-        border-radius: 5px;
+        border-radius: 9px;
         margin: 0 6px 0 6px;
-        font-size: 12px;
+        font-size: 15px;
         font-weight: 700;
         letter-spacing: 3px;
-        transition: 0.3s;
-        /* border: 50px; */
+        transition: 2s;
+        border: 3px solid #0a284a;
+        cursor: pointer;
+
       }
+
       button.blu {
         background-color: #215086;
         color: white;
@@ -98,7 +103,12 @@
         color: #215086;
       }
       button:hover {
-        transform: scale(1.07);
+        /* transform: scale(1.05); */
+        transition: 0.5s;
+      }
+      button:active{
+        transform: scale(0.95);
+        transition: 0s;
       }
 
       #input #output {
@@ -132,7 +142,7 @@
     <script>
         console.clear()
 
-        var chineseCode = "A;ㄇ|B;ㄖ|C;ㄏ|D;ㄎ|E;ㄍ|F;ㄑ|G;ㄕ|H;ㄘ|I;ㄛ|J;ㄨ|K;ㄜ|L;ㄠ|M;ㄩ|N;ㄙ|O;ㄟ|P;ㄣ|Q;ㄆ|R;ㄐ|S;ㄋ|T;ㄔ|U;ㄧ|V;ㄒ|W;ㄊ|X;ㄌ|Y;ㄗ|Z;ㄈ|/;ㄥ|1;ㄅ|2;ㄉ|3;ˇ|4;ˋ|5;ㄓ|6;ˊ|7;˙|8;ㄚ|9;ㄞ|0;ㄢ|.;ㄡ|,;ㄝ"
+        var chineseCode = "A;ㄇ|B;ㄖ|C;ㄏ|D;ㄎ|E;ㄍ|F;ㄑ|G;ㄕ|H;ㄘ|I;ㄛ|J;ㄨ|K;ㄜ|L;ㄠ|M;ㄩ|N;ㄙ|O;ㄟ|P;ㄣ|Q;ㄆ|R;ㄐ|S;ㄋ|T;ㄔ|U;ㄧ|V;ㄒ|W;ㄊ|X;ㄌ|Y;ㄗ|Z;ㄈ|/;ㄥ|1;ㄅ|2;ㄉ|3;ˇ|4;ˋ|5;ㄓ|6;ˊ|7;˙|8;ㄚ|9;ㄞ|0;ㄢ|.;ㄡ|,;ㄝ|-;ㄦ"
 
         var chineseList = chineseCode.split("|")
         for(var i=0; i<chineseList.length;i++){
@@ -207,7 +217,6 @@
 
         })
 
-        alert("歡迎使用,請按下Enter試試")
 
     </script>
 
