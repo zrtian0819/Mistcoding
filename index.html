@@ -4,6 +4,7 @@
         <meta charset="utf-8"/>
         <title>亂碼文翻譯器</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     </head>
     <style>
 
@@ -24,10 +25,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         background-color: #215086;
         overflow: hidden;
-        animation: bg_switch 10s infinite;
-        -webkit-animation: bg_switch 10s infinite;
+        animation: bg_switch 20s infinite;
+        -webkit-animation: bg_switch 20s infinite;
       }
 
       .panel {
@@ -43,7 +45,6 @@
         min-width: 230px;
         animation: fading_in 2s;
         -webkit-animation: fading_in 2s;
-
       }
 
       .panel:hover {
@@ -63,6 +64,12 @@
 
       h3 {
         margin: 10px;
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      h3.rotate{
+        animation: rotate_once 0.5s infinite ;
       }
 
       textarea {
@@ -75,6 +82,10 @@
         border: solid 4px #0a284a;
         border-radius: 20px;
         overflow:auto;
+      }
+
+      ::web-kit-scrollbar{
+        display:none;
       }
 
       textarea:active{
@@ -122,6 +133,10 @@
       }
 
 
+      .tips h4{
+        color: #2c78cf;
+      }
+
       @keyframes fading_in{
         0%{
           opacity: 0;
@@ -159,6 +174,15 @@
         }
       }
 
+      @keyframes rotate_once{
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+      }
+
 
       @media (max-width: 768px){
         button{
@@ -173,12 +197,15 @@
         <div class="panel">
             <h1>亂碼文翻譯器</h1>
             <textarea id="input" rows="5" placeholder="輸入亂碼文">su3cl3</textarea>
-            <h3>⮁</h3>
+            <h3 class="rows">⮁</h3>
             <textarea id="output" rows="5" placeholder="輸入注音文"></textarea>
             <div class="buttons">
               <button class="blu" id="btnblu">翻譯成注音</button>
               <button class="wht" id="btnwht">翻譯成亂碼</button>
             </div>
+        </div>
+        <div class="tips">
+          <h4>tips: 使用鍵盤上的「Enter」可以直接翻譯</h4>
         </div>
         <div class="sign">
 
@@ -260,9 +287,30 @@
             var input = $("#input").val()
             var result = TranslateToChinese(input)
             $("#output").val(result)
+            rotate_rows()
           }
 
         })
+
+        // 讓中間箭頭旋轉用的
+        $(".blu").click(rotate_rows)
+        $(".wht").click(rotate_rows)
+
+
+        function rotate_rows(){
+          let sec = 0 ;
+          let rota_counter = setInterval(function(){
+            sec += 1
+            // console.log(sec)
+            $(".rows").addClass("rotate")
+
+            if(sec>=2){
+              $(".rows").removeClass("rotate")
+              clearInterval(rota_counter)
+            }
+          },500)
+        }
+
 
 
     </script>
