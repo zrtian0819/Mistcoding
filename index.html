@@ -108,7 +108,6 @@
         transition: 2s;
         border: 3px solid #0a284a;
         cursor: pointer;
-
       }
 
       button.blu {
@@ -132,11 +131,20 @@
         border-radius: 10px;
       }
 
+      .tips{
+        transition:2s;
+      }
 
       .tips h4{
         color: #2c78cf;
       }
 
+      .fadeOut{
+        animation: fade_out 3s;
+
+      }
+
+/* 以下配置動畫 */
       @keyframes fading_in{
         0%{
           opacity: 0;
@@ -183,12 +191,28 @@
         }
       }
 
+      @keyframes fade_out{
+        0%{
+          opacity: 1;
+        }
+        70%{
+          opacity: 0.5;
+        }
+        100%{
+          opacity: 0;
+        }
+      }
 
+
+/* 以下配置手機板 */
       @media (max-width: 768px){
         button{
           font-size: 14px;
           letter-spacing: 1px;
+        }
 
+        .tips h4{
+          font-size: 5px;
         }
       }
 
@@ -311,6 +335,16 @@
           },500)
         }
 
+        // 10秒後讓提示消失
+        setTimeout(function(){
+          // $(".tips").css("display","none")
+          $(".tips").addClass("fadeOut")
+        },10000)
+
+        setTimeout(function(){
+          $(".tips").css("display","none")
+          // $(".tips").addClass("fadeOut")
+        },13000)
 
 
     </script>
