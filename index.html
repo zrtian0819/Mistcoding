@@ -238,7 +238,7 @@
             </div>
         </div>
         <div class="tips">
-          <h4>tips: 使用鍵盤上的「Enter」可以直接翻譯</h4>
+          <h4>tips: 響應式翻譯</h4>
         </div>
         <div class="sign">
 
@@ -313,24 +313,25 @@
         })
 
 
-        $(window).keydown(function(evt){
-          
-          if (evt.key=="Enter"){
-            console.log(evt.key + " was pressed")
-            var input = $("#input").val()
-            var result = TranslateToChinese(input)
-            $("#output").val(result)
-            rotate_rows()
-          }
-
-        })
+        // 按下enter的事件
+        // $(window).keydown(function(evt){
+        //   if (evt.key=="Enter"){
+        //     console.log(evt.key + " was pressed")
+        //     var input = $("#input").val()
+        //     var result = TranslateToChinese(input)
+        //     $("#output").val(result)
+        //     rotate_rows()
+        //   }
+        // })
         
 
+        // 響應式輸入的程式碼
         var miscode = document.querySelector(".input")
         miscode.addEventListener("input",function(){
             var text = $("#input").val()
             var result = TranslateToChinese(text)
             $("#output").val(result)
+            rotate_rows()
         })
 
 
