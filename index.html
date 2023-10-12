@@ -229,9 +229,9 @@
     <body>
         <div class="panel">
             <h1>亂碼文翻譯器</h1>
-            <textarea id="input" rows="5" placeholder="輸入亂碼文">su3cl3</textarea>
+            <textarea id="input" class="input" rows="5" placeholder="輸入亂碼文">su3cl3</textarea>
             <h3 class="rows">⮁</h3>
-            <textarea id="output" rows="5" placeholder="輸入注音文"></textarea>
+            <textarea id="output" class="output" rows="5" placeholder="輸入注音文"></textarea>
             <div class="buttons">
               <button class="blu" id="btnblu">翻譯成注音</button>
               <button class="wht" id="btnwht">翻譯成亂碼</button>
@@ -324,6 +324,15 @@
           }
 
         })
+        
+
+        var miscode = document.querySelector(".input")
+        miscode.addEventListener("input",function(){
+            var text = $("#input").val()
+            var result = TranslateToChinese(text)
+            $("#output").val(result)
+        })
+
 
         // 讓中間箭頭旋轉用的
         $(".blu").click(rotate_rows)
