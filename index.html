@@ -25,6 +25,9 @@
         justify-content: center;
         align-items: center;
         background-color: #215086;
+        overflow: hidden;
+        animation: bg_switch 10s infinite;
+        -webkit-animation: bg_switch 10s infinite;
       }
 
       .panel {
@@ -38,6 +41,9 @@
         border: 7px solid black;
         transition: 0.5s;
         min-width: 230px;
+        animation: fading_in 2s;
+        -webkit-animation: fading_in 2s;
+
       }
 
       .panel:hover {
@@ -115,8 +121,49 @@
         border-radius: 10px;
       }
 
+
+      @keyframes fading_in{
+        0%{
+          opacity: 0;
+          transform: rotate(1080deg) scale(2);
+        }
+        75%{
+          opacity: 0.5;
+        }
+        80%{
+          transform: rotate(45deg);
+        }
+        90%{
+          opacity: 0.8;
+          transform: rotate(-20deg);
+        }
+        95%{
+          transform: rotate(10deg);
+        }
+        98%{
+          transform: rotate(-5deg);
+        }
+        100%{
+          opacity: 1;
+          transform: rotate(0deg) scale(1);
+        }
+      }
+
+
+      @keyframes bg_switch{
+        0%{
+            background-color: #215086;
+        }
+        50%{
+            background-color: #0a284a;
+        }
+      }
+
+
       @media (max-width: 768px){
-        .panel{
+        button{
+          font-size: 14px;
+          letter-spacing: 1px;
 
         }
       }
