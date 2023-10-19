@@ -28,8 +28,21 @@
         flex-direction: column;
         background-color: #215086;
         overflow: hidden;
-        animation: bg_switch 20s infinite;
-        -webkit-animation: bg_switch 20s infinite;
+        /* animation: bg_switch 20s infinite;
+        -webkit-animation: bg_switch 20s infinite; */
+      }
+
+      body::before{
+        /* 利用偽元素，解決body亮度filter造成子元素亮度跟著改變的問題 */
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        /* background-color: #215086; */
+        animation: bg_switch 5s infinite;
+        -webkit-animation: bg_switch 5s infinite;
+
       }
 
       .panel {
@@ -38,13 +51,14 @@
         border-radius: 25px;
         position: relative;
         z-index: 1;
-        background-color: #F7CE54;
+        /* background-color: #F7CE54; */
+        background-color: #F7D001;
         width: 280px;
         border: 7px solid black;
         transition: 0.5s;
         min-width: 230px;
-        animation: fading_in 2s;
-        -webkit-animation: fading_in 2s;
+        animation: fading_in 1s;
+        -webkit-animation: fading_in 1s;
       }
 
       .panel:hover {
@@ -79,7 +93,7 @@
         box-sizing: border-box;
         outline: none;
         resize: none;
-        border: solid 4px #0a284a;
+        border: solid 5px #0a284a;
         border-radius: 20px;
         overflow:auto;
       }
@@ -89,7 +103,7 @@
       }
 
       textarea:active{
-        border: solid 4px #2c78cf;
+        border: solid 5px #2c78cf;
       }
 
       .buttons {
@@ -106,7 +120,7 @@
         font-weight: 700;
         letter-spacing: 3px;
         transition: 2s;
-        border: 3px solid #0a284a;
+        border: 5px solid #0a284a;
         cursor: pointer;
       }
 
@@ -151,39 +165,43 @@
 
 /* 以下配置動畫 */
       @keyframes fading_in{
+        /* 旋轉動畫被我取消了 */
+
         0%{
           opacity: 0;
-          transform: rotate(1080deg) scale(2);
+          /* transform: rotate(1080deg) scale(2); */
+          transform: translate(0,60px) scale(0.95);
         }
         75%{
-          opacity: 0.5;
+          /* opacity: 0.5; */
         }
         80%{
-          transform: rotate(45deg);
+          /* transform: rotate(45deg); */
         }
         90%{
-          opacity: 0.8;
-          transform: rotate(-20deg);
+          /* opacity: 0.8; */
+          /* transform: rotate(-20deg); */
         }
         95%{
-          transform: rotate(10deg);
+          /* transform: rotate(10deg); */
         }
         98%{
-          transform: rotate(-5deg);
+          /* transform: rotate(-5deg); */
         }
         100%{
           opacity: 1;
-          transform: rotate(0deg) scale(1);
+          /* transform: rotate(0deg) scale(1); */
+          transform: translate(0,0) scale(1);
         }
       }
 
 
       @keyframes bg_switch{
         0%{
-            background-color: #215086;
+          filter:brightness(1.5);
         }
         50%{
-            background-color: #0a284a;
+          filter:brightness(0.8);
         }
       }
 
