@@ -40,8 +40,8 @@
         position: absolute;
         z-index: -1;
         /* background-color: #215086; */
-        animation: bg_switch 5s infinite;
-        -webkit-animation: bg_switch 5s infinite;
+        animation: bg_switch 1s infinite;
+        -webkit-animation: bg_switch 1s infinite;
 
       }
 
@@ -59,6 +59,7 @@
         min-width: 230px;
         animation: fading_in 1s;
         -webkit-animation: fading_in 1s;
+
       }
 
       .panel:hover {
@@ -148,7 +149,7 @@
       .tips{
         transition:2s;
         position: absolute;
-        top: 80%;
+        top: 3%;
         left: 50%;
         transform: translate(-50%,0)
       }
@@ -201,7 +202,7 @@
           filter:brightness(1.5);
         }
         50%{
-          filter:brightness(0.8);
+          filter:brightness(0.6);
         }
       }
 
@@ -234,9 +235,9 @@
           letter-spacing: 1px;
         }
 
-        .tips{
-          top:90%;
-        }
+        /* .tips{
+          top:3%;
+        } */
 
         .tips h4{
           font-size: 5px;
@@ -256,7 +257,7 @@
             </div>
         </div>
         <div class="tips">
-          <h4>tips: 響應式翻譯</h4>
+          <h4 class="tipH">tips: 響應式翻譯</h4>
         </div>
         <div class="sign">
 
@@ -268,6 +269,19 @@
         console.clear()
 
         var chineseCode = "A;ㄇ|B;ㄖ|C;ㄏ|D;ㄎ|E;ㄍ|F;ㄑ|G;ㄕ|H;ㄘ|I;ㄛ|J;ㄨ|K;ㄜ|L;ㄠ|M;ㄩ|N;ㄙ|O;ㄟ|P;ㄣ|Q;ㄆ|R;ㄐ|S;ㄋ|T;ㄔ|U;ㄧ|V;ㄒ|W;ㄊ|X;ㄌ|Y;ㄗ|Z;ㄈ|/;ㄥ|1;ㄅ|2;ㄉ|3;ˇ|4;ˋ|5;ㄓ|6;ˊ|7;˙|8;ㄚ|9;ㄞ|0;ㄢ|.;ㄡ|,;ㄝ|-;ㄦ"
+
+
+        // 背景顏色隨機變更功能
+        var colorful = ['#215086','#215086','#215086','#215086','#215086','#215086','#215086','#215086','black','white','#F13371','#022E1F','#85C9E8','#A77A4A',];   //在此可以無限新增背景色碼
+        colorCode = Math.floor(Math.random()*(colorful.length))
+        console.log('background color code = '+ colorCode)
+        $('body').css('background-color', colorful[colorCode]);
+        if(colorCode>=8){
+          console.log('特殊顏色出現')
+          console.log($('tipH'))
+          $('.tipH').text("tips: 特殊色出現");
+        }
+
 
         var chineseList = chineseCode.split("|")
         for(var i=0; i<chineseList.length;i++){
